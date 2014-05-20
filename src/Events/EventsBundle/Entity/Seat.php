@@ -35,7 +35,7 @@ class Seat
     protected $zone;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="seats")
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="seat")
      */
     protected $tickets;
 
