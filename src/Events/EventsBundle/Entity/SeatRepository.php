@@ -12,4 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class SeatRepository extends EntityRepository
 {
+    public function findBySeatName($name) {
+        return $this->findOneBy(array('name' => $name));
+    }
 }

@@ -1,1 +1,51 @@
-Hello World!
+{% extends 'EventsBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="highlight">
+                <table id="app-tickets-table" class="display" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Seat Number</th>
+                        <th>Zone</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Seat Number</th>
+                        <th>Zone</th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+
+                    <tbody>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ ticket.getParticipant().getFullName() }}</td>
+                            <td>{{ ticket.getSeat().getName() }}</td>
+                            <td>{{ ticket.getSeat().getZone().getTitle() }}</td>
+                            <td>
+                                <div class="pull-right">
+                                    <button data-ticket-id="{{ ticket.getId() }}" type="button"
+                                            class="{% if not ticket.getCheckedIn() %}hide{% endif %} app-check-out btn btn-success">
+                                        Check Out
+                                    </button>
+                                    <button data-ticket-id="{{ ticket.getId() }}" type="button"
+                                            class="{% if ticket.getCheckedIn() %}hide{% endif %} app-check-in btn btn-primary">
+                                        Check In
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

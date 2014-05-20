@@ -2,3 +2,4 @@ app/logs
 app/cache
 .idea
 vendor
+web/bundles

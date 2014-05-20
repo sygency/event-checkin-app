@@ -23,6 +23,13 @@ class Ticket
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="checked_in", type="boolean")
+     */
+    private $checkedIn;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Seat", inversedBy="tickets")
      * @ORM\JoinColumn(name="seat_id", referencedColumnName="id")
      */
@@ -88,5 +95,28 @@ class Ticket
     public function getParticipant()
     {
         return $this->participant;
+    }
+
+    /**
+     * Set checkedIn
+     *
+     * @param boolean $checkedIn
+     * @return Ticket
+     */
+    public function setCheckedIn($checkedIn)
+    {
+        $this->checkedIn = $checkedIn;
+
+        return $this;
+    }
+
+    /**
+     * Get checkedIn
+     *
+     * @return boolean 
+     */
+    public function getCheckedIn()
+    {
+        return $this->checkedIn;
     }
 }
