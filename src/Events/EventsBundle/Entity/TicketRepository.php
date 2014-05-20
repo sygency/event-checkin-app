@@ -23,4 +23,15 @@ class TicketRepository extends EntityRepository
         $this->getEntityManager()->persist($ticket);
         $this->getEntityManager()->flush();
     }
+
+    /**
+     * @param $ids
+     * @return array
+     */
+    public function findAllByIds($ids) {
+        return $this->createQueryBuilder('t')
+            ->where('t.id IN (:ids)')
+            ->setParameter('ids', $ids)
+            ->getQuery()->getResult();
+    }
 }

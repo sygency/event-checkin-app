@@ -32,11 +32,11 @@
                             <td>
                                 <div class="pull-right">
                                     <button data-ticket-id="{{ ticket.getId() }}" type="button"
-                                            class="{% if not ticket.getCheckedIn() %}hide{% endif %} app-check-out btn btn-success">
-                                        Check Out
+                                            class="{% if not ticket.getCheckedIn() %}hide{% endif %} app-check-out btn btn-default">
+                                        Undo Check In
                                     </button>
                                     <button data-ticket-id="{{ ticket.getId() }}" type="button"
-                                            class="{% if ticket.getCheckedIn() %}hide{% endif %} app-check-in btn btn-primary">
+                                            class="{% if ticket.getCheckedIn() %}hide{% endif %} app-check-in btn btn-success">
                                         Check In
                                     </button>
                                 </div>

@@ -13,7 +13,7 @@ class ApiController extends Controller
 {
     /**
      * @Route("/api/check_in")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      */
     public function checkInAction(Request $request) {
         $em = $this->get('doctrine.orm.entity_manager');
