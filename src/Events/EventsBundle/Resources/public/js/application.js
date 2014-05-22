@@ -1,8 +1,6 @@
 $(document).ready(function () {
-    $('#app-tickets-table').dataTable();
-
     // check in button click
-    $('.app-check-in').click(function () {
+    $('.app-check-in').on('click', function () {
         var ticketId = $(this).data('ticket-id'),
             container = $(this).closest('tr');
 
@@ -14,7 +12,7 @@ $(document).ready(function () {
     });
 
     // check out button click
-    $('.app-check-out').click(function () {
+    $('.app-check-out').on('click', function () {
         var ticketId = $(this).data('ticket-id'),
             container = $(this).closest('tr');
 
@@ -45,4 +43,24 @@ $(document).ready(function () {
                 });
             });
     }, 2000);
+
+    // update progress
+    setInterval(function() {
+        $.post(TedXEvents.Config.baseUrl + 'guest_list/progress')
+            .done(function (response) {
+                var percentage = response['progress'];
+
+                $('#app-check-in-progress .progress-bar')
+                    .attr('aria-valuenow', percentage)
+                    .css('width', percentage + '%');
+            });
+    }, 10000);
+
+    $('#app-tickets-table').dataTable({
+        "dom": '<"tickets-table-top"f>rt<"tickets-table-bottom"li><"clearfix"><"tickets-table-pagination"p><"clearfix">',
+        "oLanguage": { "sSearch": "" }
+    });
+
+    $('#app-tickets-table_filter input').addClass('form-control')
+        .attr('placeholder', 'Search for Atendees by Name, Seat number or Ticket Type');
 });

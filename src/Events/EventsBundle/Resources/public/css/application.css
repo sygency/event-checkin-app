@@ -1,0 +1,62 @@
+.navbar {
+    min-height: 70px;
+}
+
+.navbar-default .navbar-brand {
+    font-size: 24px;
+    color: #030303;
+    font-family: verdana, arial, sans serif;
+}
+
+.navbar-brand div {
+    font-size: 18px;
+    color: #777;
+}
+
+#app-progress-info {
+    text-align: center;
+}
+
+#app-progress-info span {
+    font-weight: bold;
+}
+
+#app-tickets-table_filter {
+    float: none;
+    text-align: left;
+}
+
+#app-tickets-table_filter input {
+    margin: 0;
+    width: 100%;
+    font-weight: normal;
+}
+
+#app-tickets-table_filter label {
+    width: 100%;
+    position: relative;
+}
+
+#app-tickets-table_length {
+    float: left;
+}
+
+.tickets-table-bottom {
+    margin-top: 10px;
+}
+
+#app-tickets-table_info {
+    float: right;
+    clear: none;
+    padding-top: 0;
+}
+
+.tickets-table-pagination {
+    position: relative;
+}
+
+#app-tickets-table_paginate {
+    margin: 0 auto;
+    width: 420px;
+    float: none;
+}

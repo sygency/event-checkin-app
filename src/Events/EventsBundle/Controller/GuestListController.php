@@ -21,8 +21,11 @@ class GuestListController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
         $ticketRepository = $em->getRepository('EventsBundle:Ticket');
         $tickets = $ticketRepository->findAll();
+        $progress = $ticketRepository->getCheckedInPercentage();
+        $ticketCount = $ticketRepository->getTicketCount();
+        $checkedInTicketCount = $ticketRepository->getCheckedInCount();
 
-        return compact('tickets');
+        return compact('tickets', 'progress', 'ticketCount', 'checkedInTicketCount');
     }
 
     /**
@@ -70,5 +73,17 @@ class GuestListController extends Controller
         }
 
         return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/guest_list/progress")
+     * @Method({"POST"})
+     */
+    public function progressAction() {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $ticketRepository = $em->getRepository('EventsBundle:Ticket');
+        $progress = $ticketRepository->getCheckedInPercentage();
+
+        return new JsonResponse(compact('progress'));
     }
 }

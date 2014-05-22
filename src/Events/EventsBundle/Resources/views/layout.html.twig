@@ -7,6 +7,7 @@
     <title>TedX Events</title>
 
     {% stylesheets 'bundles/events/css/bootstrap.min.css' 'bundles/events/lib/datatables/css/jquery.dataTables.css'
+        'bundles/events/css/application.css'
         filter='cssrewrite' %}
 
         <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -31,7 +32,13 @@
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
-        <a class="navbar-brand" href="#">TedX Events</a>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <a class="navbar-brand" href="#">Check In
+                    <div>TEDxHongKongED 2014 "insiprED"</div>
+                </a>
+            </div>
+        </div>
     </div>
 </nav>
 

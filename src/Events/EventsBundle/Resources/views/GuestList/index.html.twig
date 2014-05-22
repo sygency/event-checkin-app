@@ -2,50 +2,65 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <div class="highlight">
-                <table id="app-tickets-table" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Seat Number</th>
-                        <th>Zone</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-
-                    <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Seat Number</th>
-                        <th>Zone</th>
-                        <th></th>
-                    </tr>
-                    </tfoot>
-
-                    <tbody>
-                    {% for ticket in tickets %}
-                        <tr>
-                            <td>{{ ticket.getParticipant().getFullName() }}</td>
-                            <td>{{ ticket.getSeat().getName() }}</td>
-                            <td>{{ ticket.getSeat().getZone().getTitle() }}</td>
-                            <td>
-                                <div class="pull-right">
-                                    <button data-ticket-id="{{ ticket.getId() }}" type="button"
-                                            class="{% if not ticket.getCheckedIn() %}hide{% endif %} app-check-out btn btn-default">
-                                        Undo Check In
-                                    </button>
-                                    <button data-ticket-id="{{ ticket.getId() }}" type="button"
-                                            class="{% if ticket.getCheckedIn() %}hide{% endif %} app-check-in btn btn-success">
-                                        Check In
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+        <div class="col-md-offset-2 col-md-4">
+            <div id="app-check-in-progress" class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ progress }}"
+                     aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%">
+                </div>
+                <div style="text-align: center">{{ progress|number_format(0, '.', ',') }}%</div>
             </div>
+        </div>
+        <div class="col-md-4">
+            <div id="app-progress-info" style="text-align: center">
+                <span id="app-checked-in-count">{{ checkedInTicketCount }}</span> out of
+                <span id="app-total-ticket-count">{{ ticketCount }}</span> checked in
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+
+            <table id="app-tickets-table" class="display dataTable" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Seat Number</th>
+                    <th>Zone</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Seat Number</th>
+                    <th>Zone</th>
+                    <th></th>
+                </tr>
+                </tfoot>
+
+                <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.getParticipant().getFullName() }}</td>
+                        <td>{{ ticket.getSeat().getName() }}</td>
+                        <td>{{ ticket.getSeat().getZone().getTitle() }}</td>
+                        <td>
+                            <div class="pull-right">
+                                <button data-ticket-id="{{ ticket.getId() }}" type="button"
+                                        class="{% if not ticket.getCheckedIn() %}hide{% endif %} app-check-out btn btn-default">
+                                    Undo Check In
+                                </button>
+                                <button data-ticket-id="{{ ticket.getId() }}" type="button"
+                                        class="{% if ticket.getCheckedIn() %}hide{% endif %} app-check-in btn btn-success">
+                                    Check In
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

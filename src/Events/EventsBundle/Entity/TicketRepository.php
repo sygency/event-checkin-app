@@ -34,4 +34,43 @@ class TicketRepository extends EntityRepository
             ->setParameter('ids', $ids)
             ->getQuery()->getResult();
     }
+
+    /**
+     * Get percentage of checked out tickets
+     *
+     * @return float
+     */
+    public function getCheckedInPercentage() {
+        $total = $this->getTicketCount();
+        $checkedIn = $this->getCheckedInCount();
+
+        return $checkedIn / $total * 100;
+    }
+
+    /**
+     * Get total ticket count
+     *
+     * @return int
+     */
+    public function getTicketCount() {
+        $totalQb = $this->getEntityManager()->createQueryBuilder()
+            ->select('count(ticket.id)')
+            ->from('EventsBundle:Ticket','ticket');
+
+        return $totalQb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * Get number of checked out tickets
+     *
+     * @return int
+     */
+    public function getCheckedInCount() {
+        $checkedInQb = $this->getEntityManager()->createQueryBuilder()
+            ->select('count(ticket.id)')
+            ->from('EventsBundle:Ticket','ticket')
+            ->where('ticket.checkedIn = 1');
+
+        return $checkedInQb->getQuery()->getSingleScalarResult();
+    }
 }
