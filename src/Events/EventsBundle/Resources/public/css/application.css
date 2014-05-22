@@ -70,3 +70,11 @@
     position: absolute;
     width: 360px;
 }
+
+td.actions {
+    width: 150px;
+}
+
+td.actions button span {
+    margin-right: 5px;
+}
