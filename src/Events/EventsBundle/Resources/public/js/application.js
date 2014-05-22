@@ -72,16 +72,18 @@ $(document).ready(function () {
             });
     }, 3000);
 
-    $('#app-tickets-table').dataTable({
-        "dom": '<"tickets-table-top"f>rt<"tickets-table-bottom"li><"clearfix"><"tickets-table-pagination"p><"clearfix">',
-        "oLanguage": { "sSearch": "" }
+    var table = $('#app-tickets-table').DataTable({
+        "dom": '<"tickets-table-top">rt<"tickets-table-bottom"li><"clearfix"><"tickets-table-pagination"p><"clearfix">',
     });
 
-    $('#app-tickets-table_filter input').addClass('form-control')
-        .attr('placeholder', 'Search for Atendees by Name, Seat number or Ticket Type');
+    $('#app-ticket-search').on('keyup', function () {
+        table
+            .search('"' + this.value + '"')
+            .draw();
+    });
 
     var width = $('#app-tickets-table_paginate').width();
-    console.log(width);
+    
     $('#app-tickets-table_paginate').css({
         width: width + 100,
         float: 'none'
