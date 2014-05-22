@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-md-offset-2 col-md-4">
             <div id="app-check-in-progress" class="progress">
+                <div id="app-progress-percents">{{ progress|number_format(0, '.', ',') }}%</div>
                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ progress }}"
                      aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%">
                 </div>
-                <div style="text-align: center">{{ progress|number_format(0, '.', ',') }}%</div>
             </div>
         </div>
         <div class="col-md-4">

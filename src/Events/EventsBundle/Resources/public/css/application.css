@@ -60,3 +60,13 @@
     width: 420px;
     float: none;
 }
+
+#app-check-in-progress {
+    position: relative;
+}
+
+#app-progress-percents {
+    text-align: center;
+    position: absolute;
+    width: 360px;
+}

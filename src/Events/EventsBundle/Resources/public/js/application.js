@@ -48,11 +48,17 @@ $(document).ready(function () {
     setInterval(function() {
         $.post(TedXEvents.Config.baseUrl + 'guest_list/progress')
             .done(function (response) {
-                var percentage = response['progress'];
+                var percentage     = response['progress'],
+                    ticketCount    = response['ticketCount'],
+                    checkedInCount = response['checkedInTicketCount'];
 
-                $('#app-check-in-progress .progress-bar')
+                $('#app-check-in-progress').find('.progress-bar')
                     .attr('aria-valuenow', percentage)
                     .css('width', percentage + '%');
+                $('#app-progress-percents').html(Math.floor(percentage) + '%');
+
+                $('#app-checked-in-count').html(checkedInCount);
+                $('#app-total-ticket-count').html(ticketCount);
             });
     }, 10000);
 

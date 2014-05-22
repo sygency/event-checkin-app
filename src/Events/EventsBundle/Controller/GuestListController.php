@@ -83,7 +83,9 @@ class GuestListController extends Controller
         $em = $this->get('doctrine.orm.entity_manager');
         $ticketRepository = $em->getRepository('EventsBundle:Ticket');
         $progress = $ticketRepository->getCheckedInPercentage();
+        $ticketCount = $ticketRepository->getTicketCount();
+        $checkedInTicketCount = $ticketRepository->getCheckedInCount();
 
-        return new JsonResponse(compact('progress'));
+        return new JsonResponse(compact('progress', 'ticketCount', 'checkedInTicketCount'));
     }
 }
