@@ -25,14 +25,23 @@ class ApiController extends Controller
 
         if ($seat) {
             foreach ($seat->getTickets() as $ticket) {
-                $ticketRepository->checkIn($ticket->getId());
-
-                return new JsonResponse(array(
-                    'status' => 'ok',
-                    'message' => '',
-                    'seat' => $ticket->getSeat()->getName(),
-                    'zone' => $ticket->getSeat()->getZone()->getTitle()
-                ));
+            	if($ticket->getCheckedIn()) {
+            		return new JsonResponse(array(
+            				'status' => 'Warning',
+            				'message' => 'Already checked in',
+            				'seat' => $ticket->getSeat()->getName(),
+            				'zone' => $ticket->getSeat()->getZone()->getTitle()
+            		));
+            	} else {
+	                $ticketRepository->checkIn($ticket->getId());
+	
+	                return new JsonResponse(array(
+	                    'status' => 'ok',
+	                    'message' => '',
+	                    'seat' => $ticket->getSeat()->getName(),
+	                    'zone' => $ticket->getSeat()->getZone()->getTitle()
+	                ));
+            	}
             }
         } else {
             return new JsonResponse(array(
