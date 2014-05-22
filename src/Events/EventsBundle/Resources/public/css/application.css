@@ -15,6 +15,7 @@
 
 #app-progress-info {
     text-align: center;
+    line-height: 30px;
 }
 
 #app-progress-info span {
@@ -41,6 +42,10 @@
     float: left;
 }
 
+#app-tickets-table_length label {
+    font-weight: normal;
+}
+
 .tickets-table-bottom {
     margin-top: 10px;
 }
@@ -57,12 +62,14 @@
 
 #app-tickets-table_paginate {
     margin: 0 auto;
-    width: 420px;
-    float: none;
+    float: left;
 }
 
 #app-check-in-progress {
     position: relative;
+    height: 30px;
+    font-size: 23px;
+    line-height: 30px;
 }
 
 #app-progress-percents {

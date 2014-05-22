@@ -8,6 +8,11 @@ $(document).ready(function () {
             .done(function (response) {
                 $('.app-check-in', container).hide();
                 $('.app-check-out', container).removeClass('hide').show();
+
+                // add one from checked in count
+                $('#app-checked-in-count').each(function() {
+                    $(this).html(parseInt($(this).html()) + 1);
+                });
             });
     });
 
@@ -20,6 +25,11 @@ $(document).ready(function () {
             .done(function (response) {
                 $('.app-check-out', container).hide();
                 $('.app-check-in', container).removeClass('hide').show();
+
+                // subtract one from checked in count
+                $('#app-checked-in-count').each(function() {
+                    $(this).html(parseInt($(this).html()) - 1);
+                });
             });
     });
 
@@ -60,7 +70,7 @@ $(document).ready(function () {
                 $('#app-checked-in-count').html(checkedInCount);
                 $('#app-total-ticket-count').html(ticketCount);
             });
-    }, 10000);
+    }, 3000);
 
     $('#app-tickets-table').dataTable({
         "dom": '<"tickets-table-top"f>rt<"tickets-table-bottom"li><"clearfix"><"tickets-table-pagination"p><"clearfix">',
@@ -69,4 +79,11 @@ $(document).ready(function () {
 
     $('#app-tickets-table_filter input').addClass('form-control')
         .attr('placeholder', 'Search for Atendees by Name, Seat number or Ticket Type');
+
+    var width = $('#app-tickets-table_paginate').width();
+    console.log(width);
+    $('#app-tickets-table_paginate').css({
+        width: width + 100,
+        float: 'none'
+    });
 });
