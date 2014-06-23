@@ -20,25 +20,19 @@ Installation is the same as for any other symfony project:
 
 [**Event Check-in Demo**][1]
 
-Before starting coding, make sure that your local system is properly
-configured for Symfony.
-
-Execute the `check.php` script from the command line:
-
-    php app/check.php
-
-The script returns a status code of `0` if all mandatory requirements are met,
-`1` otherwise.
-
-Access the `config.php` script from a browser:
-
-    http://localhost/path/to/symfony/app/web/config.php
-
-If you get any warnings or recommendations, fix them before moving on.
-
-3) Credits
+3) What's coming
 --------------------------------
 
-Application is developed by Synergy Technologies
+* QR ticket scanner android app
 
-[1]:  http://symfony.com/doc/2.4/book/installation.html
+4) Contributing
+--------------------------------
+
+If you find this code useful or if you are interested in contributing do not hesitate to contact me personally.
+
+5) Credits
+--------------------------------
+
+Application is developed by Synergy Technologies.
+
+[1]:  http://tedxevents.foundry8.com/
