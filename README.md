@@ -10,12 +10,10 @@ android QR ticket scanner.
 
 Installation is the same as for any other symfony project:
 
-* Clone repository to your local machine
-*
+Clone repository to your local machine
+
     curl -s http://getcomposer.org/installer | php
-*
     php composer.phar install
-*
     php app/console doctrine:migrations:migrate
 
 2) Demo
